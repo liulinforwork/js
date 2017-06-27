@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<div></div>-->
+<!--<style>-->
+    <!--div{-->
+        <!--margin-left: 100px;-->
+        <!--width: 200px;-->
+        <!--height: 200px;-->
+        <!--background-color: #0a8ddf;-->
+    <!--}-->
+<!--</style>-->
+    <script type="text/javascript">
+        'use strict';
+
+
+        // 0.5秒后返回input*input的计算结果:
+        function multiply(input) {
+            return new Promise(function (resolve, reject) {
+                console.log('calculating ' + input + ' x ' + input + '...');
+                setTimeout(resolve, 2000, input * input);
+//                console.log(221)
+//                reject("这段代码有问题");
+            });
+
+//            console.log('calculating ' + input + ' x ' + input + '...');
+        }
+
+        // 0.5秒后返回input+input的计算结果:
+        function add(input) {
+            return new Promise(function (resolve, reject) {
+                console.log('calculating ' + input + ' + ' + input + '...');
+                setTimeout(resolve, 2000, input + input);
+            });
+        }
+
+
+
+        var p = new Promise(function (resolve, reject) {
+            console.log('start new Promise...');
+            setTimeout(to,2000);
+            function to() {
+                resolve(2);
+//                reject("这段代码有问题");
+            }
+        });
+
+        p.then(multiply)
+                .then(add)
+                .then(multiply)
+                .then(add)
+                .then(function (result) {
+                    console.log('Got value: ' + result);
+                })
+                .catch(function (err) {
+                    console.log("失败回调"+err);
+                })
+
+    </script>
+</body>
+</html>
