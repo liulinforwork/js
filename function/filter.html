@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter数组筛选</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        'use strict';
+
+        console.log('demo start...');
+
+        //1
+        var arr1 = [1,2,3,4,7,8,9,11,17];
+        var r1 = arr1.filter(function (x) {
+            return x%2 !== 0;/*保留奇数*/
+//            return x%2 == 0;/*保留偶数*/
+        });
+        console.log(r1);
+
+        //2 删除数组中的空字符串
+        var arr2 = ['','232','','','fdf2232',null,undefined];
+        var r2 = arr2.filter(function (s) {
+            return s && s.trim();
+        });
+        console.log(r2);
+
+        //3 filter()接收的回调函数，其实可以有多个参数。通常我们仅使用第一个参数，表示Array的某个元素。回调函数还可以接收另外两个参数，表示元素的位置和数组本身：
+        var arr3 = ['a','b','c'];
+        var r3 = arr3.filter(function (x,index,self) {
+            console.log(x);
+            console.log(index);
+            console.log(self);
+            console.log("分割线-----------------");
+            return true;
+        });
+        console.log(r3);
+
+        //4 数组去重
+        var arr4 = ['a','b','c',1,2,3,4,'b','d','sds','2',2,3,4];
+        var r4 = arr4.filter(function (x,index,self) {
+            //去除重复元素依靠的是indexOf总是返回第一个元素的位置，后续的重复元素位置与indexOf返回的位置不相等，因此被filter滤掉了。
+            return self.indexOf(x) === index;
+        });
+        console.log(r4);
+
+        //5 用filter()筛选出素数
+        function get_primes(arr) {
+            arr.filter(function (x) {
+                return x%2 == 0;
+            })
+        }
+        // 测试:
+        var
+                x,
+                r,
+                arr = [];
+        for (x = 1; x < 100; x++) {
+            arr.push(x);
+        }
+        r = get_primes(arr);
+        if (r.toString() === [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97].toString()) {
+            alert('测试通过!');
+        } else {
+            alert('测试失败: ' + r.toString());
+        }
+
+        console.log('demo end...')
+
+    </script>
+</body>
+</html>
