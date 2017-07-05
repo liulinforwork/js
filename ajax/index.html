@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="img/2.jpg" alt="">
+        </div>
+    </header>
+    <script type="text/javascript" charset="utf-8">
+        var xhr = new XMLHttpRequest();
+        xhr.open('get','http://67.205.131.201:8080/api/products',true);
+        xhr.send();
+    </script>
+</body>
+</html>

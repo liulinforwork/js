@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传下载</title>
+</head>
+<body>
+    <!--<input type="file" id="files" multiple accept="image/gif,image/jpeg,image/jpg,image/png">-->
+    <!--&lt;!&ndash;<input type="file" id="files" multiple accept="image/*">&ndash;&gt;-->
+    <!--<script>-->
+        <!--var elem = document.getElementById('files');-->
+        <!--elem.onchange = function (event) {-->
+            <!--var files = event.target.files;-->
+            <!--for (var i = 0; i < files.length; i++) {-->
+                <!--// 文件类型为 image 并且文件大小小于 200kb-->
+                <!--if(files[i].type.indexOf('image/') !== -1 && files[i].size < 204800){-->
+                    <!--console.log(files[i].name);-->
+                <!--}-->
+            <!--}-->
+        <!--}-->
+
+        <!--var blob = new Blob(['hello'], {type:"text/plain"});-->
+
+        <!--var newblob = blob.slice(0,5, {type:"text/plain"});-->
+
+<!--//        var canvas = document.getElementById('canvas');-->
+<!--//        canvas.toBlob(function(blob){ console.log(blob); }, "image/jpeg", 0.5);-->
+        <!---->
+        <!---->
+        <!---->
+    <!--</script>-->
+
+    <input type="file" id="files" accept="image/jpeg,image/jpg,image/png">
+    <img src="blank.gif" id="preview">
+    <script>
+        var elem = document.getElementById('files'),
+                img = document.getElementById('preview');
+        elem.onchange = function () {
+            var files = elem.files,
+                    reader = new FileReader();
+            if(files && files[0]){
+                reader.onload = function (ev) {
+                    img.src = ev.target.result;
+                }
+                reader.readAsDataURL(files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
