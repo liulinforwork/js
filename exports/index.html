@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>exports && module.exports</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        var a = {
+            name : 'liulin'
+        };
+        var b = a;
+        console.log(a);
+        console.log(b);
+
+        b.name = 'lumingming';
+        console.log(a);
+        console.log(b);
+
+        var b = {
+            name : 'liuyang'
+        };
+        console.log(a);
+        console.log(b);
+
+    </script>
+</body>
+</html>
